@@ -20,9 +20,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterM
         super(model, view);
     }
 
-    public void getVerifyCode(String phoneStr) {
+    public void getVerifyCode(String username) {
 
-        mModel.getVerifyCode(phoneStr)
+        mModel.getVerifyCode(username)
                 .compose(RxHttpResponseCompat.<String>compatResult())
                 .subscribe(new ErrorHandlerSubscriber<String>() {
                     @Override
@@ -32,9 +32,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterM
                 });
     }
 
-    public void register(String phone, String password, String verifyCode) {
+    public void register(String username, String password, String verifyCode) {
 
-        mModel.register(phone,password,verifyCode)
+        mModel.register(username,password,verifyCode)
                 .compose(RxHttpResponseCompat.<UserBean>compatResult())
                 .subscribe(new ErrorHandlerSubscriber<UserBean>() {
                     @Override
@@ -44,9 +44,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterM
                 });
     }
 
-    public void modifyPassword(String phone, String password, String verifyCode) {
+    public void resetPassword(String username, String password, String verifyCode) {
 
-        mModel.modifyPassword(phone,password,verifyCode)
+        mModel.resetPassword(username,password,verifyCode)
                 .compose(RxHttpResponseCompat.<String>compatResult())
                 .subscribe(new ErrorHandlerSubscriber<String>() {
                     @Override

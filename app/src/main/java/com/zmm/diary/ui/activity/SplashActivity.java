@@ -1,7 +1,7 @@
 package com.zmm.diary.ui.activity;
 
 import android.graphics.PointF;
-import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.ImageViewState;
@@ -9,12 +9,11 @@ import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.zmm.diary.R;
 import com.zmm.diary.dagger.component.HttpComponent;
 import com.zmm.diary.utils.SharedPreferencesUtil;
-import com.zmm.diary.utils.config.CommonConfig;
+import com.zmm.diary.config.CommonConfig;
 
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
@@ -53,22 +52,24 @@ public class SplashActivity extends BaseActivity {
         //禁止滑动
         mSubImage.setPanEnabled(false);
 
+        startActivity(LoginActivity.class,true);
 
 
-        Observable.timer(2, TimeUnit.SECONDS).subscribe(new Consumer<Long>() {
-            @Override
-            public void accept(Long aLong) throws Exception {
-
-                boolean isLogin = SharedPreferencesUtil.getBoolean(CommonConfig.LOGIN_STATUS, false);
-
-                if (isLogin) {
-                    startActivity(MainActivity.class,true);
-                } else {
-                    startActivity(LoginActivity.class,true);
-                }
-
-            }
-        });
+//        Observable.timer(2, TimeUnit.SECONDS).subscribe(new Consumer<Long>() {
+//            @Override
+//            public void accept(Long aLong) throws Exception {
+//
+//                String userJson = SharedPreferencesUtil.getString(CommonConfig.LOGIN_USER, null);
+//
+//
+//                if (TextUtils.isEmpty(userJson)) {
+//                    startActivity(LoginActivity.class,true);
+//                } else {
+//                    startActivity(MainActivity.class,true);
+//                }
+//
+//            }
+//        });
 
 
     }

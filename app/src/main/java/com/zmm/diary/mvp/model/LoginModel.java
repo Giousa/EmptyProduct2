@@ -22,7 +22,7 @@ public class LoginModel implements LoginContract.ILoginModel {
     }
 
     @Override
-    public Observable<BaseBean<UserBean>> login(String phone, String password) {
-        return mApiService.login(phone,password);
+    public Observable<BaseBean<UserBean>> login(String username, String password) {
+        return mApiService.login(username,password);
     }
 }

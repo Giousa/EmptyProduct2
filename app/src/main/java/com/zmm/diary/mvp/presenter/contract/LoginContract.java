@@ -17,7 +17,7 @@ public interface LoginContract {
 
 
     interface ILoginModel{
-        Observable<BaseBean<UserBean>> login(String phone, String password);
+        Observable<BaseBean<UserBean>> login(String username, String password);
 
     }
 

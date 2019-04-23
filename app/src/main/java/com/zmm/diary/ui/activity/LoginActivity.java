@@ -18,7 +18,7 @@ import com.zmm.diary.mvp.presenter.LoginPresenter;
 import com.zmm.diary.mvp.presenter.contract.LoginContract;
 import com.zmm.diary.utils.SharedPreferencesUtil;
 import com.zmm.diary.utils.ToastUtils;
-import com.zmm.diary.utils.config.CommonConfig;
+import com.zmm.diary.config.CommonConfig;
 
 import butterknife.BindView;
 import butterknife.OnClick;

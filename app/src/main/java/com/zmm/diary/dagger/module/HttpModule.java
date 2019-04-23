@@ -1,12 +1,13 @@
 package com.zmm.diary.dagger.module;
 
 
-import com.zmm.diary.http.cookie.AddCookiesInterceptor;
-import com.zmm.diary.http.cookie.ReceivedCookiesInterceptor;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.zmm.diary.http.ApiService;
 import com.zmm.diary.rx.RxErrorHandler;
 import com.zmm.diary.utils.UIUtils;
-import com.zmm.diary.utils.config.CommonConfig;
+import com.zmm.diary.config.CommonConfig;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,7 +34,6 @@ public class HttpModule {
     @Singleton
     public OkHttpClient provideOkHttpClient(){
 
-        System.out.println("：：：：初始化  OkHttpClient");
         // log用拦截器
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
@@ -43,13 +43,13 @@ public class HttpModule {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 // HeadInterceptor实现了Interceptor，用来往Request Header添加一些业务相关数据，如APP版本，token信息
                 .addInterceptor(logging)
-                .addInterceptor(new ReceivedCookiesInterceptor(UIUtils.getContext()))
-                .addInterceptor(new AddCookiesInterceptor(UIUtils.getContext()))
+                .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(UIUtils.getContext())))
                 // 连接超时时间设置
                 .connectTimeout(10, TimeUnit.SECONDS)
                 // 读取超时时间设置
                 .readTimeout(10, TimeUnit.SECONDS)
                 .build();
+
 
         return okHttpClient;
 

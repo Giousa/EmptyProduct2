@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.zmm.diary.MyApplication;
 import com.zmm.diary.bean.UserBean;
-import com.zmm.diary.utils.config.CommonConfig;
+import com.zmm.diary.config.CommonConfig;
 
 /**
  * Description:

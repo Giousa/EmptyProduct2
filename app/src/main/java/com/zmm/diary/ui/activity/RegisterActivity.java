@@ -19,7 +19,7 @@ import com.zmm.diary.utils.SharedPreferencesUtil;
 import com.zmm.diary.utils.ToastUtils;
 import com.zmm.diary.utils.UIUtils;
 import com.zmm.diary.utils.VerificationUtils;
-import com.zmm.diary.utils.config.CommonConfig;
+import com.zmm.diary.config.CommonConfig;
 
 import java.util.concurrent.TimeUnit;
 
@@ -133,20 +133,20 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     private void buttonConfirm() {
 
 
-        String phone = mEtPhone.getText().toString();
+        String username = mEtPhone.getText().toString();
         String password = mEtPassword.getText().toString();
         String verifyCode = mEtYzm.getText().toString();
-        boolean flag1 = checkPhone(phone);
+        boolean flag1 = checkPhone(username);
         boolean flag2 = checkPassword(password);
         boolean flag3 = checkVerifyCode(verifyCode);
 
         if(flag1 && flag2 && flag3){
             if(mParam == 1){
-                register(phone,password,verifyCode);
+                register(username,password,verifyCode);
             }else if(mParam == 2){
-                resetPassword(phone,password,verifyCode);
+                resetPassword(username,password,verifyCode);
             }else {
-                modifyPassword(phone,password,verifyCode);
+                modifyPassword(username,password,verifyCode);
             }
         }
     }
@@ -154,25 +154,25 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     /**
      * 注册
      */
-    private void register(String phone, String password, String verifyCode) {
+    private void register(String username, String password, String verifyCode) {
 
-        mPresenter.register(phone,password,verifyCode);
+        mPresenter.register(username,password,verifyCode);
 
     }
 
     /**
      * 重置密码
      */
-    private void resetPassword(String phone, String password, String verifyCode) {
-        mPresenter.modifyPassword(phone,password,verifyCode);
+    private void resetPassword(String username, String password, String verifyCode) {
+        mPresenter.resetPassword(username,password,verifyCode);
 
     }
 
     /**
      * 修改密码
      */
-    private void modifyPassword(String phone, String password, String verifyCode) {
-        mPresenter.modifyPassword(phone,password,verifyCode);
+    private void modifyPassword(String username, String password, String verifyCode) {
+        mPresenter.resetPassword(username,password,verifyCode);
 
     }
 

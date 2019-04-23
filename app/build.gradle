@@ -30,6 +30,9 @@ dependencies {
     //multidex
     implementation 'com.android.support:multidex:1.0.3'
 
+    //Cookie
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+
     //dagger2
     implementation rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]

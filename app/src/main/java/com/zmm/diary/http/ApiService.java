@@ -9,6 +9,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Description:
@@ -19,18 +20,6 @@ import retrofit2.http.Path;
 public interface ApiService {
 
 
-//    /**
-//     * 登录
-//     * @param phone
-//     * @param password
-//     * @return
-//     */
-//    @FormUrlEncoded
-//    @POST("api/user/login.json")
-//    Observable<BaseBean<UserBean>> login(@Field("loginId") String phone, @Field("password") String password);
-//
-
-
     /**
      * -----------------------------登录注册界面接口-----------------------------
      */
@@ -38,43 +27,58 @@ public interface ApiService {
 
     /**
      * 获取验证码
-     * @param phone
+     * @param username
      * @return
      */
-    @GET("user/getVerifyCode/{phone}")
-    Observable<BaseBean<String>> getVerifyCode(@Path("phone") String phone);
+    @POST("user/getVerifyCode")
+    Observable<BaseBean<String>> getVerifyCode(@Query("username") String username);
 
 
     /**
      * 登录
-     * @param phone
+     * @param username
      * @param password
      * @return
      */
-    @FormUrlEncoded
-    @POST("user/login/")
-    Observable<BaseBean<UserBean>> login(@Field("phone") String phone, @Field("password") String password);
+    @POST("user/login")
+    Observable<BaseBean<UserBean>> login(@Query("username") String username,
+                                         @Query("password") String password);
 
     /**
      * 注册
-     * @param phone
+     * @param username
      * @param password
      * @return
      */
-    @FormUrlEncoded
-    @POST("user/register/")
-    Observable<BaseBean<UserBean>> register(@Field("phone") String phone, @Field("password") String password, @Field("verifyCode") String verifyCode);
+    @POST("user/register")
+    Observable<BaseBean<UserBean>> register(@Query("username") String username,
+                                            @Query("password") String password,
+                                            @Query("verifyCode") String verifyCode);
 
     /**
-     * 忘记密码
-     * @param phone
+     * 修改密码
+     * @param username
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    @POST("user/modifyPassword")
+    Observable<BaseBean<String>> modifyPassword(@Query("username") String username,
+                                                @Query("oldPassword") String oldPassword,
+                                                @Query("newPassword") String newPassword);
+
+
+    /**
+     * 重置密码
+     * @param username
      * @param newPassword
      * @param verifyCode
      * @return
      */
-    @FormUrlEncoded
-    @POST("user/modifyPassword/")
-    Observable<BaseBean<String>> modifyPassword(@Field("phone") String phone, @Field("newPassword") String newPassword, @Field("verifyCode") String verifyCode);
+    @POST("user/resetPassword")
+    Observable<BaseBean<String>> resetPassword(@Query("username") String username,
+                                                @Query("newPassword") String newPassword,
+                                                @Query("verifyCode") String verifyCode);
 
 
 

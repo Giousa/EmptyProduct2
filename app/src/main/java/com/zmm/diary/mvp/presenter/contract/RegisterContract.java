@@ -18,11 +18,11 @@ public interface RegisterContract {
 
     interface IRegisterModel{
 
-        Observable<BaseBean<String>> getVerifyCode(String phone);
+        Observable<BaseBean<String>> getVerifyCode(String username);
 
-        Observable<BaseBean<UserBean>> register(String phone, String password,String code);
+        Observable<BaseBean<UserBean>> register(String username, String password,String code);
 
-        Observable<BaseBean<String>> modifyPassword(String phone,String newPassword,String code);
+        Observable<BaseBean<String>> resetPassword(String username,String newPassword,String code);
 
 
     }

@@ -1,4 +1,4 @@
-package com.zmm.diary.utils.config;
+package com.zmm.diary.config;
 
 /**
  * Description:
@@ -10,11 +10,7 @@ public class CommonConfig {
 
 
     //基本网络请求地址
-    public static final String BASE_URL = "http://192.168.253.7:8080/diary/";
-
-
-    //Cookie
-    public static final String COOKIE="diary_cookie";
+    public static final String BASE_URL = "http://192.168.253.7:9090/painting-days/";
 
     //登录用户
     public static final String LOGIN_USER="LOGIN_USER";

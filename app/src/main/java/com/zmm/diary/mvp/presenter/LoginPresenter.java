@@ -23,12 +23,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginModel,Logi
 
     /**
      * 登录
-     * @param phone
+     * @param username
      * @param password
      */
-    public void login(String phone, String password) {
+    public void login(String username, String password) {
 
-        mModel.login(phone,password)
+        mModel.login(username,password)
                 .compose(RxHttpResponseCompat.<UserBean>compatResult())
                 .subscribe(new ErrorHandlerSubscriber<UserBean>() {
                     @Override

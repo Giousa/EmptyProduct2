@@ -22,17 +22,17 @@ public class RegisterModel implements RegisterContract.IRegisterModel{
     }
 
     @Override
-    public Observable<BaseBean<String>> getVerifyCode(String phone) {
-        return mApiService.getVerifyCode(phone);
+    public Observable<BaseBean<String>> getVerifyCode(String username) {
+        return mApiService.getVerifyCode(username);
     }
 
     @Override
-    public Observable<BaseBean<UserBean>> register(String phone, String password, String code) {
-        return mApiService.register(phone,password,code);
+    public Observable<BaseBean<UserBean>> register(String username, String password, String code) {
+        return mApiService.register(username,password,code);
     }
 
     @Override
-    public Observable<BaseBean<String>> modifyPassword(String phone, String newPassword,String code) {
-        return mApiService.modifyPassword(phone,newPassword,code);
+    public Observable<BaseBean<String>> resetPassword(String username, String newPassword,String code) {
+        return mApiService.modifyPassword(username,newPassword,code);
     }
 }
