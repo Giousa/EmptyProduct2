@@ -85,10 +85,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
 
     private void initToolBar() {
-        //这里一定要加上，否则menu不显示
-        setSupportActionBar(mTitleBar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
         if (mParam == 1) {
             mTitle = "注册";
@@ -101,11 +97,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         }
         System.out.println("mTitle = " + mTitle);
 
-        mBtnConfirm.setText(mTitle);
-        mTitleBar.setCenterTitle(mTitle);
-
-        mTitleBar.setNavigationIcon(UIUtils.getResources().getDrawable(R.mipmap.back));
-        mTitleBar.setNavigationOnClickListener(new View.OnClickListener() {
+        mTitleBar.setTitle(mTitle);
+//        mTitleBar.setLeftImageResource(R.drawable.icon_back);
+        mTitleBar.setLeftText("返回");
+        mTitleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(LoginActivity.class,true);
